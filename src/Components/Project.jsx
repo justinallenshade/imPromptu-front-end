@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-export default function ProjectDisplay(props) {
+export default function ProjectDisplay(projectState) {
+    
     //grab the list and username in here
     // map through the list and display each 
-    let array = ["project1", "project2", "project3"]
-    let username = "Shane"
+    
+    
     // will need to for each project name entered 
     //create a unique id for each one
     //can create on onclick function that can grab the
@@ -13,7 +14,7 @@ export default function ProjectDisplay(props) {
 
     return (
         <div>
-            {array.map((project) => {
+            {projectState.map((project) => {
                 return(
                     <p>{project}</p>
                 )

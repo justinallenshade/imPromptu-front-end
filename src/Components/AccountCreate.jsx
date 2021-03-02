@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { Link } from 'react-router-dom'
 
 export default function AccountCreate(props) {
+
+    const [loginState, setLoginState] = useState({ username: '',email: '', password: ''})
+
+    const createLoginChange = (event) => {
+        setLoginState({...loginState, [event.target.id]: event.target.value})
+    }
+    
+
+    async function createLogin(event){
+        event.preventDefault();
+        // console.log(loginState)
+        
+        fetch(`http://localhost:4000/login/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(loginState)
+        })
+        .then(res => res.json())
+        .then(data => {
+            // where I would pass data and redirect if the data
+            // is acceptable 
+            console.log('success:', data);
+            
+        })
+        .catch((error) => {
+            console.log('error:', error)
+        })
+    }
+
+
     return (
         <div>
-            <h1>Account create</h1>
-            <form className="loginForm"  action="http://localhost:4000/login/create" method="post">
-                <input type="text" placeholder="username" name="username"></input>
-                <input type="email" placeholder="email" name="email"></input>
-                <input type="text" placeholder="Password" name="password"></input>
-                <input type="submit" className="loginButton" value="Create Account"></input>
+            <h1>Account Creation</h1>
+            <form id="loginForm" onSubmit={createLogin}>
+                <input id="username" type="text" placeholder="username" onChange={createLoginChange} value={loginState.username}></input>
+                <input id="email" type="email" placeholder="Email" onChange={createLoginChange} value={loginState.email}></input>
+                <input id="password" type="password" placeholder="Password" onChange={createLoginChange} value={loginState.password}></input>
+                <input type="submit" className="loginButton" value="Create account"></input>
                 <Link to={'/login'} className='loginButton'><button>Back</button></Link>
             </form>
         </div>
