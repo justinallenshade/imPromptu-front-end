@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import WritingDisplay from "./WritingDisplay"
 
-export default function Writing(props, select) {
-   
+export default function Writing({selectState, userState}) {
     const [chapter, setChapter] = useState([])
 
-    // get grabbed from the users username on login
-    // and from the project list that is in the users
-    const projectName = 'project 1'
-    const username = "Shane"
+    console.log(userState)
+    console.log(selectState)
 
-    let http = `http://localhost:4000/project/${username}`
+    let http = `http://localhost:4000/project/${userState}`
 
     useEffect(() => {
         const getChapters = () => {
@@ -32,7 +29,7 @@ export default function Writing(props, select) {
             <h1>Writing component</h1>
             <div>
                 {chapter.map((title) => {
-                    if(title.project === projectName){
+                    if(title.project === selectState){
                         return(
                             <WritingDisplay key={title._id} display={title}/>
                         )

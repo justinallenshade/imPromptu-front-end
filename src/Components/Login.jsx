@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom'
 
 export default function Login({projectChange, userChange}) {
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loginState, setLoginState] = useState({ username: '', password: ''})
 
     const loginChange = (event) => {
@@ -27,12 +28,20 @@ export default function Login({projectChange, userChange}) {
             console.log(res.message);
             projectChange(res.data.projects)
             userChange(res.data.username)
+            // window.location.assign('http://localhost:3000/project')
+            setIsLoggedIn(true);
+
         })
         .catch((error) => {
             console.log('error:', error)
         })
     }
 
+    if(isLoggedIn === true){
+        return(
+            <Redirect to="/project"/>
+        )
+    }
 
     return (
         <div>

@@ -1,8 +1,9 @@
 import React, { useState }  from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
-export default function AccountCreate(props) {
+export default function AccountCreate(prop) {
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loginState, setLoginState] = useState({ username: '',email: '', password: ''})
 
     const createLoginChange = (event) => {
@@ -23,14 +24,20 @@ export default function AccountCreate(props) {
         })
         .then(res => res.json())
         .then(data => {
-            // where I would pass data and redirect if the data
-            // is acceptable 
+            // where I would redirect if the data
+            // is acceptable and display account created
             console.log('success:', data);
-            
+            setIsLoggedIn(true);
         })
         .catch((error) => {
             console.log('error:', error)
         })
+    }
+
+    if(isLoggedIn === true){
+        return(
+            <Redirect to="/login"/>
+        )
     }
 
 
