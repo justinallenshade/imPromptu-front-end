@@ -37,11 +37,11 @@ export default function App() {
   }
 
 
-  console.log(projectState, userState, selectState)
+  // console.log(projectState, userState, selectState)
   return (
     <div className="App">
       <Route path="/writing" exact render={() => <Writing selectState={selectState} userState={userState}/>} /> 
-      <Route path="/login" exact render={() => <Login projectChange={projectChange} userChange={userChange}/>} /> 
+      <Route path="/" exact render={() => <Login projectChange={projectChange} userChange={userChange}/>} /> 
       <Route path="/accountcreation" exact render={() => <AccountCreate/>} /> 
       <Route path="/project" exact render={() => <Projects projectState={projectState} userState={userState} selectChange={selectChange} projectChange={projectChange}/>} /> 
     </div>

@@ -25,11 +25,12 @@ export default function Login({projectChange, userChange}) {
         .then(res => {
             // where I would pass data and redirect if the data
             // is acceptable 
-            console.log(res.message);
-            projectChange(res.data.projects)
-            userChange(res.data.username)
-            // window.location.assign('http://localhost:3000/project')
-            setIsLoggedIn(true);
+            alert(res.message);
+            if(res.message === `welcome back ${res.data.username}`){
+                projectChange(res.data.projects)
+                userChange(res.data.username)
+                setIsLoggedIn(true);
+            }
 
         })
         .catch((error) => {

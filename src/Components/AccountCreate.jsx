@@ -27,6 +27,7 @@ export default function AccountCreate(prop) {
             // where I would redirect if the data
             // is acceptable and display account created
             console.log('success:', data);
+            alert(data.message)
             setIsLoggedIn(true);
         })
         .catch((error) => {
@@ -36,7 +37,7 @@ export default function AccountCreate(prop) {
 
     if(isLoggedIn === true){
         return(
-            <Redirect to="/login"/>
+            <Redirect to="/"/>
         )
     }
 
@@ -49,7 +50,7 @@ export default function AccountCreate(prop) {
                 <input id="email" type="email" placeholder="Email" onChange={createLoginChange} value={loginState.email}></input>
                 <input id="password" type="password" placeholder="Password" onChange={createLoginChange} value={loginState.password}></input>
                 <input type="submit" className="loginButton" value="Create account"></input>
-                <Link to={'/login'} className='loginButton'><button>Back</button></Link>
+                <Link to={'/'} className='loginButton'><button>Back</button></Link>
             </form>
         </div>
     );

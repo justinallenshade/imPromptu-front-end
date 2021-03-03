@@ -41,7 +41,8 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
             },
             body: JSON.stringify({
                 username: userState,
-                project : newProjectState.projects
+                project : newProjectState.projects,
+                title : "new chapter"
 
             })
         })
