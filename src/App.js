@@ -8,7 +8,10 @@ import AccountCreate from './Components/AccountCreate'
 import Projects from './Components/Project'
 
 export default function App() {
+
   
+  // let url = `http://localhost:4000/`
+  let url = `https://impromptu-back-end.herokuapp.com/`
 
   const [userState, setUserState] = useState({ username: ''})
   const [projectState, setProjectState] = useState({ project: []})
@@ -40,10 +43,10 @@ export default function App() {
   // console.log(projectState, userState, selectState)
   return (
     <div className="App">
-      <Route path="/writing" exact render={() => <Writing selectState={selectState} userState={userState}/>} /> 
-      <Route path="/" exact render={() => <Login projectChange={projectChange} userChange={userChange}/>} /> 
-      <Route path="/accountcreation" exact render={() => <AccountCreate/>} /> 
-      <Route path="/project" exact render={() => <Projects projectState={projectState} userState={userState} selectChange={selectChange} projectChange={projectChange} setProjectState={setProjectState} />} /> 
+      <Route path="/writing" exact render={() => <Writing selectState={selectState} userState={userState} url={url}/>} /> 
+      <Route path="/" exact render={() => <Login projectChange={projectChange} userChange={userChange} url={url}/>} /> 
+      <Route path="/accountcreation" exact render={() => <AccountCreate url={url}/>} /> 
+      <Route path="/project" exact render={() => <Projects projectState={projectState} userState={userState} selectChange={selectChange} projectChange={projectChange} setProjectState={setProjectState} url={url}/>} /> 
     </div>
   );
 }

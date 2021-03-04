@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import WritingDisplay from "./WritingDisplay"
 import { Link } from 'react-router-dom'
 
-export default function Writing({selectState, userState}) {
+export default function Writing({selectState, userState, url}) {
     const [chapter, setChapter] = useState([])
 
     const [updateState, setUpdateState] = useState({ title: "Please Select Section", body: "Please Select Section"})
@@ -14,11 +14,12 @@ export default function Writing({selectState, userState}) {
     }
     
     
-    let http = `http://localhost:4000/project/${userState}`
+    let http = `project/${userState}`
+    let adition = `project`
     
     useEffect(() => {
         const getChapters = () => {
-            fetch(http)
+            fetch(`${url}${http}`)
             .then((res) => res.json())
             .then((res) => {
                 setChapter(res)
@@ -28,13 +29,13 @@ export default function Writing({selectState, userState}) {
             });
         };
         getChapters();
-    },[http]);
+    },[http, url]);
     
 
     async function editFormSubmit(event){
         event.preventDefault();
        
-        await fetch(`http://localhost:4000/project`,{
+        await fetch(`${url}${adition}`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +48,7 @@ export default function Writing({selectState, userState}) {
         })
         .then(res => res.json())
         .then(res => {
-            fetch(http)
+            fetch(`${url}${http}`)
             .then((res) => res.json())
             .then((res) => {
                 setChapter(res)
@@ -65,7 +66,7 @@ export default function Writing({selectState, userState}) {
 
     async function onClickCreate(event){
         event.preventDefault();
-        await fetch(`http://localhost:4000/project`, {
+        await fetch(`${url}${adition}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,7 +80,7 @@ export default function Writing({selectState, userState}) {
         })
         .then(res => res.json())
         .then(res => {
-            fetch(http)
+            fetch(`${url}${http}`)
             .then((res) => res.json())
             .then((res) => {
                 setChapter(res)
@@ -102,7 +103,7 @@ export default function Writing({selectState, userState}) {
                 {chapter.map((title) => {
                     if(title.project === selectState){
                         return(
-                            <WritingDisplay key={title._id} display={title} updateState={updateState} setUpdateState={setUpdateState} setSelectedID={setSelectedID} http={http} setChapter={setChapter}/>
+                            <WritingDisplay key={title._id} display={title} updateState={updateState} setUpdateState={setUpdateState} setSelectedID={setSelectedID} http={http} setChapter={setChapter} url={url}/>
                         )
                     }else{
                         return null

@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import { Redirect } from 'react-router-dom'
 
-export default function WritingDisplay({ display, selectChange, userState, setProjectState }) {
+export default function WritingDisplay({ display, selectChange, userState, setProjectState, url }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
 
     async function projectClick(event) {
@@ -15,7 +15,8 @@ export default function WritingDisplay({ display, selectChange, userState, setPr
     async function deleteProject(event){
         event.preventDefault();
         
-        await fetch(`http://localhost:4000/project/${userState}`,{
+        let adition1 = `project/${userState}`
+        await fetch(`${url}${adition1}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +25,8 @@ export default function WritingDisplay({ display, selectChange, userState, setPr
         })
         .then(res => res.json())
         .then(res => {
-            fetch(`http://localhost:4000/login/${userState}`, {
+            let adition2 = `login/${userState}`
+            fetch(`${url}${adition2}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

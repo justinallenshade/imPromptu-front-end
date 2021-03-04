@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 
-export default function Login({projectChange, userChange}) {
+export default function Login({projectChange, userChange, url}) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loginState, setLoginState] = useState({ username: '', password: ''})
@@ -10,11 +10,11 @@ export default function Login({projectChange, userChange}) {
         setLoginState({...loginState, [event.target.id]: event.target.value})
     }
     
-
+    let adition = 'login'
     async function postLogin(event){
         event.preventDefault();
         
-        await fetch(`http://localhost:4000/login`, {
+        await fetch(`${url}${adition}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

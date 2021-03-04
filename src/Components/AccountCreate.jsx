@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import { Link, Redirect } from 'react-router-dom'
 
-export default function AccountCreate(prop) {
+export default function AccountCreate({ url }) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [loginState, setLoginState] = useState({ username: '',email: '', password: ''})
@@ -10,12 +10,12 @@ export default function AccountCreate(prop) {
         setLoginState({...loginState, [event.target.id]: event.target.value})
     }
     
-
+    let addition = 'login/create'
     async function createLogin(event){
         event.preventDefault();
         // console.log(loginState)
         
-        fetch(`http://localhost:4000/login/create`, {
+        fetch(`${url}${addition}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

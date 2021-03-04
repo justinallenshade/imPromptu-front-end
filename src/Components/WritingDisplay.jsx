@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function WritingDisplay({ display, setUpdateState, setSelectedID, http, setChapter}) {
+export default function WritingDisplay({ display, setUpdateState, setSelectedID, http, setChapter, url}) {
     let title = display.title
     let body = display.body
     let id = display._id
@@ -14,7 +14,8 @@ export default function WritingDisplay({ display, setUpdateState, setSelectedID,
 
     async function onClickDelete(event){
         event.preventDefault();
-        await fetch(`http://localhost:4000/project`, {
+        let adition = 'project'
+        await fetch(`${url}${adition}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -23,7 +24,7 @@ export default function WritingDisplay({ display, setUpdateState, setSelectedID,
         })
         .then(res => res.json())
         .then(res => {
-            fetch(http)
+            fetch(`${url}${http}`)
             .then((res) => res.json())
             .then((res) => {
                 setChapter(res)

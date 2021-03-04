@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ProjectRender from './ProjectRender'
 
-export default function ProjectDisplay({ projectState, selectChange, projectChange, userState, setProjectState }) {
+export default function ProjectDisplay({ projectState, selectChange, projectChange, userState, setProjectState, url }) {
     
     const [newProjectState, setNewProjectState] = useState({ projects: ''})
     
@@ -18,7 +18,8 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
     async function createProject(event){
         event.preventDefault();
         
-        await fetch(`http://localhost:4000/login/add/${userState}`,{
+        let adition1 = `login/add/${userState}`
+        await fetch(`${url}${adition1}`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,8 +34,8 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
             console.log('error:', error)
         })
         
-        
-        await fetch(`http://localhost:4000/project`, {
+        let adition2 = 'project'
+        await fetch(`${url}${adition2}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +70,7 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
             {projectState.map((project) => {
                 key = key +1
                 return(
-                    <ProjectRender key={key} display={project} selectChange={selectChange} userState={userState} setProjectState={setProjectState} />
+                    <ProjectRender key={key} display={project} selectChange={selectChange} userState={userState} setProjectState={setProjectState} url={url}/>
                 )
             })}
         </div>
