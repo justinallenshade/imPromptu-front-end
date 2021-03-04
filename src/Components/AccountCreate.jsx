@@ -26,7 +26,6 @@ export default function AccountCreate(prop) {
         .then(data => {
             // where I would redirect if the data
             // is acceptable and display account created
-            console.log('success:', data);
             alert(data.message)
             setIsLoggedIn(true);
         })

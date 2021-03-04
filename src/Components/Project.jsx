@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import ProjectRender from './ProjectRender'
 
-export default function ProjectDisplay({ projectState, selectChange, projectChange, userState }) {
+export default function ProjectDisplay({ projectState, selectChange, projectChange, userState, setProjectState }) {
     
     const [newProjectState, setNewProjectState] = useState({ projects: ''})
     
     const newProjectChange = (event) => {
-        setNewProjectState({...newProjectState, [event.target.id]: event.target.value})
+        setNewProjectState({...newProjectState, [event.target.className]: event.target.value})
     }
+
     
     // will need to for each project name entered 
     //create a unique id for each one
@@ -17,7 +18,7 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
     async function createProject(event){
         event.preventDefault();
         
-        await fetch(`http://localhost:4000/login/${userState}`,{
+        await fetch(`http://localhost:4000/login/add/${userState}`,{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,7 +27,6 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
         })
         .then(res => res.json())
         .then(res => {
-            console.log(res);
             projectChange(res)
         })
         .catch((error) => {
@@ -62,13 +62,14 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
         <div>
             <h1>Project list</h1>
             <form>
-                <input id="projects" type="text" placeholder="project name" onChange={newProjectChange} value={newProjectState.projects}></input>
+                <input className="projects" type="text" placeholder="project name" onChange={newProjectChange} value={newProjectState.projects}></input>
                 <button className="createProject" onClick={createProject}>Create project</button>
             </form>
+
             {projectState.map((project) => {
                 key = key +1
                 return(
-                    <ProjectRender key={key} display={project} selectChange={selectChange}/>
+                    <ProjectRender key={key} display={project} selectChange={selectChange} userState={userState} setProjectState={setProjectState} />
                 )
             })}
         </div>

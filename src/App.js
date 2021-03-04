@@ -43,7 +43,7 @@ export default function App() {
       <Route path="/writing" exact render={() => <Writing selectState={selectState} userState={userState}/>} /> 
       <Route path="/" exact render={() => <Login projectChange={projectChange} userChange={userChange}/>} /> 
       <Route path="/accountcreation" exact render={() => <AccountCreate/>} /> 
-      <Route path="/project" exact render={() => <Projects projectState={projectState} userState={userState} selectChange={selectChange} projectChange={projectChange}/>} /> 
+      <Route path="/project" exact render={() => <Projects projectState={projectState} userState={userState} selectChange={selectChange} projectChange={projectChange} setProjectState={setProjectState} />} /> 
     </div>
   );
 }

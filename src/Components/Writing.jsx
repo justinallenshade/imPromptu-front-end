@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Writing({selectState, userState}) {
     const [chapter, setChapter] = useState([])
 
-    const [updateState, setUpdateState] = useState({ title: "title", body: ""})
+    const [updateState, setUpdateState] = useState({ title: "Please Select Section", body: "Please Select Section"})
     const [selectedID, setSelectedID] = useState({ id: ""})
    
 
@@ -51,7 +51,7 @@ export default function Writing({selectState, userState}) {
             .then((res) => res.json())
             .then((res) => {
                 setChapter(res)
-                
+                alert('Chapter Saved')
             })
             .catch((error) => {
                 console.log(error);
