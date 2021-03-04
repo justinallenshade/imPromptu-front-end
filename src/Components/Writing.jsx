@@ -114,7 +114,7 @@ export default function Writing({selectState, userState, url}) {
                 <form className="editForm" onSubmit={editFormSubmit}>
                     <input id="title" type="text" placeholder="title" onChange={updateChange} value={updateState.title}></input>
                     <button>Save</button>
-                    <textarea id="body" type="test" rows="40" cols="100" onChange={updateChange} value={updateState.body}></textarea>
+                    <textarea id="body" type="test" rows="40" cols="150" onChange={updateChange} value={updateState.body}></textarea>
                 </form>
             </div>
         </div>
