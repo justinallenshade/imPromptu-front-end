@@ -4,8 +4,11 @@
 My project is called Impromptu, it is a blog writing styled app. Currently I have implemented the account sections and the project/writing sections. I plan on implementing a prompt section where users can post prompts to a page and select the prompt to write a story about. This app would be like a twitter or OneNote combination geared towards writers. <br/>
 
 ## Page layout<br/>
+![Screenshot from 2021-03-04 04-17-17](https://user-images.githubusercontent.com/74937340/109961139-35488c00-7caf-11eb-961d-8a5b7dc90ca9.png)
+![Screenshot from 2021-03-04 04-54-47](https://user-images.githubusercontent.com/74937340/109961187-42fe1180-7caf-11eb-80f8-6fc2cdc58d8b.png)
 
 ## Wireframes<br/>
+![Screenshot from 2021-02-24 00-35-03](https://user-images.githubusercontent.com/74937340/109961107-28c43380-7caf-11eb-8935-41b04625542d.png)
 
 ## List of Features / User Stories<br/>
 As a novice writer I need new prompts to try out. <br/>
