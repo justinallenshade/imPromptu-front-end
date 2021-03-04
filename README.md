@@ -22,9 +22,11 @@ As a general user I would like to be able to have a notes section so I could bra
 As a professional writer I want to be able to write stories without selecting a prompt.<br/>
 
 ## List of Technologies Used<br/>
-This app is a full stack MERN stack application. The front end was made in React and Node while the back end was made in eExpress and MongoDB.
-## Installation Instructions / Getting Started
-To start the project you would want to fork and clone the repo. Install all dependencies and make sure that the url in App.js is set to localhost as the other is for the deployed url. 
+This app is a full stack MERN stack application. The front end was made in React and Node while the back end was made in eExpress and MongoDB.<br/>
+## Installation Instructions / Getting Started<br/>
+To start the project you would want to fork and clone the front end repo. Install all dependencies and make sure that the url in App.js is set to localhost as the other is for the deployed url. 
 After doing that go to the back end and fork and clone that repo down. Once again install the dependencies. Run node on the seeds.js and loginseeds.js to seed the databse to finish up. 
-## Contribution Guidelines
-As this project is both a test and a learning experince for myself, I would ask that all contributions be made throuh issues unless otherwise stated. 
+## Contribution Guidelines<br/>
+As this project is both a test and a learning experince for myself, I would ask that all contributions be made throuh issues unless otherwise stated.<br/> 
+## Usolved problems
+There is a cors error when trying to create/delete from the deplyed back end. 
