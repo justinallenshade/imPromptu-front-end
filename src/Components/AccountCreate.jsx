@@ -42,7 +42,7 @@ export default function AccountCreate({ url }) {
 
 
     return (
-        <div>
+        <div className='loginSection'>
             <h1>Account Creation</h1>
             <form id="loginForm" onSubmit={createLogin}>
                 <input id="username" type="text" placeholder="username" onChange={createLoginChange} value={loginState.username}></input>

@@ -45,7 +45,7 @@ export default function Login({projectChange, userChange, url}) {
     }
 
     return (
-        <div>
+        <div className="loginSection">
             <h1>Login</h1>
             <form id="loginForm" onSubmit={postLogin}>
                 <input id="username" type="text" placeholder="username" onChange={loginChange} value={loginState.username}></input>

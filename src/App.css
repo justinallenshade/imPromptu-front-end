@@ -1,3 +1,44 @@
-.App {
-  text-align: center;
+.loginSection, #projects, .projectList{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.projectDisplay{
+  font-size: 20px;
+}
+
+#writing{
+  display: grid;
+  grid-template-columns: 25% auto;
+  grid-template-rows: 25% auto;
+  justify-items: center;
+  
+}
+#editForm{
+  grid-column: 2;
+  grid-row: 2;
+}
+#chapterList{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#writingTitle{
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 30px;
+  margin: 0;
+  align-self: center;
+}
+.selectProject{
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.chapterTitle{
+  font-size: 20px;
+  border: solid 1px black;
+  padding: 5px;
 }

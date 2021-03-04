@@ -41,9 +41,11 @@ export default function WritingDisplay({ display, setUpdateState, setSelectedID,
     
     return (
         <div className="selectProject">
-            <p>{title}</p>
-            <button onClick={selectProject}>Select</button>
-            <button onClick={onClickDelete}>Delete</button>
+            <p className="chapterTitle">{title}</p>
+            <div>
+                <button onClick={selectProject}>Select</button>
+                <button onClick={onClickDelete}>Delete</button>
+            </div>
         </div>
     );
 }

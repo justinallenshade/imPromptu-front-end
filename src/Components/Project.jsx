@@ -60,7 +60,7 @@ export default function ProjectDisplay({ projectState, selectChange, projectChan
     
     let key =0
     return (
-        <div>
+        <div id="projects">
             <h1>Project list</h1>
             <form>
                 <input className="projects" type="text" placeholder="project name" onChange={newProjectChange} value={newProjectState.projects}></input>

@@ -57,13 +57,13 @@ export default function WritingDisplay({ display, selectChange, userState, setPr
     }
 
     return (
-        <div>
+        <div className="projectList">
             <div>
                 <p className="projectDisplay">{display}</p>
-                <button className="projectSelect" onClick={projectClick}>Select</button>
             </div>
             <div>
-                <button className="createProject" onClick={deleteProject}>Delete project</button>
+                <button className="projectSelect" onClick={projectClick}>Select</button>
+                <button className="deleteProject" onClick={deleteProject}>Delete project</button>
             </div>
         </div>
     );

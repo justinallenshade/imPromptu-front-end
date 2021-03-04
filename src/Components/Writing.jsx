@@ -95,8 +95,8 @@ export default function Writing({selectState, userState, url}) {
     }
 
     return (
-        <div>
-            <h1>Writing component</h1>
+        <div id="writing">
+            <p id="writingTitle">Writing component</p>
             <div id="chapterList">
                 <button><Link to={'/project'} className="char">Back</Link></button>
                 <button onClick={onClickCreate}>Create</button>
@@ -113,8 +113,8 @@ export default function Writing({selectState, userState, url}) {
             <div id="editForm">
                 <form className="editForm" onSubmit={editFormSubmit}>
                     <input id="title" type="text" placeholder="title" onChange={updateChange} value={updateState.title}></input>
-                    <textarea id="body" type="test" rows="40" cols="100" onChange={updateChange} value={updateState.body}></textarea>
                     <button>Save</button>
+                    <textarea id="body" type="test" rows="40" cols="100" onChange={updateChange} value={updateState.body}></textarea>
                 </form>
             </div>
         </div>
